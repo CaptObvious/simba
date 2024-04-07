@@ -639,7 +639,7 @@ macro_rules! impl_float_simd(
 
         // FIXME: this should be part of impl_int_simd
         // but those methods do not seem to be implemented
-        // by packed_simd for integers.
+        // by std::simd for integers.
         impl SimdSigned for AutoSimd<$t> {
             #[inline(always)]
             fn simd_abs(&self) -> Self {

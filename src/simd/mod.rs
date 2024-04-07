@@ -1,10 +1,11 @@
 //! Traits implemented by SIMD types and non-SIMD types.
 
 pub use self::auto_simd_impl::*;
-#[cfg(feature = "packed_simd")]
-pub use self::packed_simd_impl::*;
 pub use self::simd_bool::SimdBool;
 pub use self::simd_complex::SimdComplexField;
+// FIXME: Feature gate should be removed when std::simd makes it into stable rustc.
+#[cfg(feature = "nightly")]
+pub use self::simd_impl::*;
 pub use self::simd_option::SimdOption;
 pub use self::simd_partial_ord::SimdPartialOrd;
 pub use self::simd_real::SimdRealField;
@@ -16,12 +17,13 @@ pub use self::wide_simd_impl::{
 };
 
 mod auto_simd_impl;
-#[cfg(feature = "packed_simd")]
-mod packed_simd_impl;
 #[cfg(feature = "rand")]
 mod rand_impl;
 mod simd_bool;
 mod simd_complex;
+// FIXME: Feature gate should be removed when std::simd makes it into stable rustc.
+#[cfg(feature = "nightly")]
+mod simd_impl;
 mod simd_option;
 mod simd_partial_ord;
 mod simd_real;

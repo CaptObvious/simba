@@ -1,3 +1,7 @@
+## Release v0.8.2 (06 Apr. 2023)
+- Replace the `packed_simd` feature and dependency with the `nightly` feature and `std::simd` to fix compilation on
+  nightly rustc.
+
 ## Release v0.8.1 (04 Apr. 2023)
 - Add implementation of `rkyv` serialization/deserialization to the `Wide*` wrapper types.
 

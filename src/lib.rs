@@ -13,16 +13,16 @@ with less code duplication.
 ## Cargo features
 
 Two cargo features can be optionally enabled:
-- With the __`packed_simd`__ feature enabled, the `simba::simd` module will export several SIMD types like `f32x2`,
- `f64x4`, `i32i8`, `u16i16`, etc. There types are wrappers around the SIMD types from the [__packed_simd__
- crate](https://docs.rs/packed_simd). This requires a nightly compiler.
+- With the __`nightly`__ feature enabled, the `simba::simd` module will export several SIMD types like `f32x2`,
+ `f64x4`, `i32i8`, `u16i16`, etc. There types are wrappers around the SIMD types from the [__std::simd__
+ crate](https://doc.rust-lang.org/stable/std/simd). This requires a nightly compiler.
 - With the __`wide`__ feature enabled, the `simba::simd` module will export the `WideF32x4` and `WideBoolF32x4`
   types. The types are wrappers around the `wide::f32x4` type from the [__wide__ crate](https://docs.rs/wide).
   This will work with both a stable or nightly compiler.
 
 If none of those features are enabled, __simba__ will still define all the scalar and SIMD traits.
 However, the SIMD traits won't be implemented for any SIMD types. Therefore it is recommended to:
-- Use the `packed_simd` feature if you want more features, and can afford to use a nightly compiler.
+- Use the `nightly` feature if you want more features, and can afford to use a nightly compiler.
 - Use the `wide` feature if you only need 4-lanes 32-bits floats, and can't afford to use a nightly compiler.
 */
 
