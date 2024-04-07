@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build --no-default-feature
+    - name: Build --no-default-features
       run: cargo build --no-default-features;
     - name: Build libm only
       run: cargo build --no-default-features --features libm;
@@ -28,6 +28,23 @@ jobs:
       run: cargo build;
     - name: Build all features except cuda,libm
       run: cargo build --features wide,rkyv-serialize,serde_serialize,partial_fixed_point_support;
+  build-nightly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install latest nightly
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          override: true
+      - name: Build nightly only
+        run: cargo build --no-default-features --features nightly;
+      - name: Build nightly and libm only
+        run: cargo build --no-default-features --features nightly,libm;
+      - name: Build nightly
+        run: cargo build --features nightly;
+      - name: Build all features except cuda,libm
+        run: cargo build --features nightly,wide,rkyv-serialize,serde_serialize,partial_fixed_point_support;
   build-wasm:
     runs-on: ubuntu-latest
     steps:
